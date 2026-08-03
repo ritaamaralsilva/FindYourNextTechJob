@@ -8,6 +8,7 @@ import ErrorPage from "./pages/Error";
 import { AuthProvider } from "./contexts/AuthContext";
 import Signup from "./pages/Auth/Signup";
 import LoginForm from "./pages/Auth/Login";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Perfil from "./pages/Perfil/Perfil";
 import ProtectedRoute from "./protectedRoutes/ProtectedRoute";
 import MeusCurriculos from "./pages/Curriculos/MeusCurriculos";
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/vagas/:id", element: <VagaDetalhe /> },
       { path: "/signup", element: <Signup /> },
       { path: "/login", element: <LoginForm /> },
+      { path: "/forgotpassword", element: <ForgotPassword /> },
       {
         path: "/perfil",
         element: <ProtectedRoute element={<Perfil />} />,
