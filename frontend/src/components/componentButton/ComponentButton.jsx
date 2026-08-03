@@ -57,13 +57,18 @@ export function ComponentButton({
   const visualLoading = useMinDuration(loading, minSpinDuration);
 
   const baseClass = isActive ? "cbtnActive" : "cbtn";
-  const variantClass = variant === "refresh" ? "cbtn-refresh" : "";
+  const variantClass =
+    variant === "refresh"
+      ? "cbtn-refresh"
+      : variant === "cta"
+      ? "cbtn-cta"
+      : "";
   const loadingClass =
     variant === "refresh" && visualLoading ? "cbtn-refresh--loading" : "";
 
   return (
     <button
-    type={type}
+      type={type}
       onClick={functionForClick}
       disabled={disabled}
       className={`${baseClass} ${variantClass} ${loadingClass}`.trim()}
