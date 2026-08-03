@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Baloo+2:wght@600;700&family=Nunito:wght@400;700;800&display=swap');
+
 :root {
     --navbar-height: 82px;
+
+    --lavanda: #C9B6F0;
+    --lavanda-escura: #A98FE0;
+    --pessego: #FFC9A8;
+    --menta: #A8E6C9;
+    --rosa-suave: #FFB4C6;
+    --texto: #5B4B6E;
+    --texto-suave: #8A7A9E;
+    --bg-cream: #FFF6EF;
 }
 
 /* ===========================
@@ -16,14 +27,15 @@
     display: flex;
     justify-content: center;
 
+    font-family: 'Nunito', sans-serif;
     transition: all .35s ease;
 }
 
 .navbar-glass {
     backdrop-filter: blur(16px);
-    background: rgba(247, 244, 236, .92);
-    border-bottom: 1px solid rgba(190, 166, 111, .35);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
+    background: rgba(255, 246, 239, .9);
+    border-bottom: 2px dashed rgba(169, 143, 224, .35);
+    box-shadow: 0 8px 30px rgba(169, 143, 224, .1);
 }
 
 /* ===========================
@@ -54,32 +66,46 @@
 }
 
 /* ===========================
-   LOGO
+   LOGO — efeito "escrito à mão"
 =========================== */
 
 .vagas-brand {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(-2deg);
 
     text-decoration: none;
 
-    font-family: var(--font-display);
-    font-size: 1.7rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.1rem;
+    letter-spacing: .01em;
 
-    color: var(--color-wine);
+    color: var(--lavanda-escura);
 
-    transition: .3s;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.vagas-brand::after {
+    content: "";
+    position: absolute;
+    left: 4%;
+    bottom: -4px;
+    width: 92%;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 8 1 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 100 5' stroke='%23FFC9A8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: .85;
 }
 
 .vagas-brand:hover {
-    color: var(--color-gold);
+    color: var(--rosa-suave);
+    transform: translateX(-50%) rotate(0deg) scale(1.03);
 }
 
 /* ===========================
-   LINKS
+   LINKS — sublinhado tipo rabisco de caneta
 =========================== */
 
 .nav-link {
@@ -87,42 +113,48 @@
 
     text-decoration: none;
 
-    color: var(--color-ink);
+    color: var(--texto);
 
-    font-size: .92rem;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
 
-    transition: .3s;
+    transition: color .3s ease;
 }
 
 .nav-link:hover {
-    color: var(--color-wine);
+    color: var(--lavanda-escura);
 }
 
 .nav-link::after {
     content: "";
 
     position: absolute;
-    left: 0;
-    bottom: -7px;
+    left: -2px;
+    bottom: -9px;
 
-    width: 0%;
-    height: 2px;
+    width: 105%;
+    height: 8px;
 
-    background: var(--color-gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 8 0 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 100 5' stroke='%23A98FE0' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
-    transition: .3s;
+    opacity: 0;
+    transform: scaleX(0) rotate(-1deg);
+    transform-origin: left;
+
+    transition: transform .35s ease, opacity .35s ease;
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-    width: 100%;
+    opacity: 1;
+    transform: scaleX(1) rotate(-1deg);
 }
 
 .nav-link.active {
-    color: var(--color-wine);
+    color: var(--lavanda-escura);
 }
 
 /* ===========================
@@ -141,7 +173,7 @@
 }
 
 .nav-logout:hover {
-    color: var(--color-wine);
+    color: var(--rosa-suave);
 }
 
 /* ===========================
@@ -161,11 +193,12 @@
     display: block;
 
     width: 28px;
-    height: 2px;
+    height: 3px;
 
-    margin: 7px 0;
+    margin: 6px 0;
 
-    background: var(--color-ink);
+    background: var(--lavanda-escura);
+    border-radius: 4px;
 
     transition: .35s;
 }
@@ -188,8 +221,8 @@
 
     transition: max-height .35s ease;
 
-    background: var(--color-bg);
-    border-top: 1px solid rgba(190, 166, 111, .3);
+    background: var(--bg-cream);
+    border-top: 2px dashed rgba(169, 143, 224, .3);
 }
 
 .mobile-menu-active {
@@ -203,26 +236,28 @@
 
     padding: 2rem;
     gap: 1.4rem;
+
+    font-family: 'Baloo 2', sans-serif;
 }
 
 .mobile-link {
     text-decoration: none;
-    color: var(--color-ink);
-
-    text-transform: uppercase;
-    letter-spacing: .08em;
+    color: var(--texto);
+    font-weight: 600;
 }
 
 .mobile-link.active {
-    color: var(--color-wine);
+    color: var(--lavanda-escura);
 }
 
-.restaurante-btn-sair {
+.vagas-btn-sair {
     border: none;
     background: none;
 
-    color: var(--color-wine);
+    color: var(--rosa-suave);
 
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
 }
@@ -239,10 +274,10 @@ main {
    RESPONSIVE
 =========================== */
 
-@media (max-width:950px) {
+@media (max-width: 950px) {
 
-    .restaurante-navbar-left,
-    .restaurante-navbar-right {
+    .vagas-navbar-left,
+    .vagas-navbar-right {
         display: none;
     }
 
@@ -251,11 +286,10 @@ main {
         margin-left: auto;
     }
 
-    .restaurante-brand {
+    .vagas-brand {
         position: static;
-        transform: none;
+        transform: rotate(-2deg);
         margin-right: auto;
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
-
 }
