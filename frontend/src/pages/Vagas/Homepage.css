@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --lavanda: #C9B6F0;
+    --lavanda-escura: #A98FE0;
+    --pessego: #FFC9A8;
+    --menta: #A8E6C9;
+    --texto: #5B4B6E;
+    --texto-suave: #8A7A9E;
+}
+
+.homepage {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+.homepage-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.homepage-titulo {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--texto);
+    margin: 0 0 0.5rem 0;
+}
+
+.homepage-titulo::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 6px;
+    margin: 0.5rem auto 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 8 0 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 100 5' stroke='%23FFC9A8' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.homepage-subtitulo {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    color: var(--texto-suave);
+    margin: 0;
+}
+
+.homepage-resultados {
+    margin-top: 2rem;
+}
+
+.homepage-contagem {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--lavanda-escura);
+    margin: 0 0 1.25rem 0.25rem;
+}
+
+.homepage-estado {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: var(--texto-suave);
+    padding: 3rem 1rem;
+}
+
+.homepage-erro {
+    color: #C24565;
+}
+
+.vagas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+@media (max-width: 600px) {
+    .homepage-titulo {
+        font-size: 1.9rem;
+    }
+}

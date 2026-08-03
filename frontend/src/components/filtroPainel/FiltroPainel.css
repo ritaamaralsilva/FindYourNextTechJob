@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --lavanda: #C9B6F0;
+    --lavanda-escura: #A98FE0;
+    --pessego: #FFC9A8;
+    --menta: #A8E6C9;
+    --rosa-suave: #FFB4C6;
+    --texto: #5B4B6E;
+    --texto-suave: #8A7A9E;
+}
+
+.filtro-painel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+
+    background: #FFFFFF;
+    border: 2px dashed rgba(169, 143, 224, 0.35);
+    border-radius: 24px;
+    padding: 1.5rem 1.75rem;
+
+    box-shadow: 0 10px 26px -14px rgba(169, 143, 224, 0.3);
+
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+}
+
+/* pequeno detalhe decorativo — um "clip" pastel no canto, como um
+   post-it colado ao painel, reforça a sensação de esboço/mood board */
+.filtro-painel::before {
+    content: "✦";
+    position: absolute;
+    top: -14px;
+    left: 28px;
+    font-size: 1.4rem;
+    color: var(--pessego);
+    background: #FFF6EF;
+    padding: 0 6px;
+}
+
+.filtro-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1 1 180px;
+    min-width: 160px;
+}
+
+.filtro-campo label {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--texto);
+}
+
+.filtro-campo select,
+.filtro-campo input {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texto);
+
+    padding: 0.6rem 0.9rem;
+    border: 2px solid #F0E9FA;
+    border-radius: 14px;
+    background: #FDFBFF;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.filtro-campo select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%23A98FE0' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 16px;
+    padding-right: 2.25rem;
+}
+
+.filtro-campo input::placeholder {
+    color: #C7BCDC;
+}
+
+.filtro-campo select:focus,
+.filtro-campo input:focus {
+    outline: none;
+    border-color: var(--lavanda);
+    box-shadow: 0 0 0 4px rgba(201, 182, 240, 0.28);
+    transform: translateY(-1px);
+}
+
+.filtro-campo select:hover,
+.filtro-campo input:hover {
+    border-color: var(--lavanda);
+}
