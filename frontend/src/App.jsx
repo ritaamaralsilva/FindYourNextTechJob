@@ -16,6 +16,8 @@ import MinhasCandidaturas from "./pages/Candidaturas/MinhasCandidaturas";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import GestaoFontesVagas from "./pages/Admin/GestaoFontesVagas";
 import GestaoVagas from "./pages/Admin/GestaoVagas";
+import VerificarEmail from "./pages/Auth/VerificarEmail";
+import ResetPassword from "./pages/Auth/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,9 @@ const router = createBrowserRouter([
       { path: "/vagas/:id", element: <VagaDetalhe /> },
       { path: "/signup", element: <Signup /> },
       { path: "/login", element: <LoginForm /> },
-      { path: "/forgotpassword", element: <ForgotPassword /> },
+      { path: "/forgot-password", element: <ForgotPassword /> },
+      { path: "/verificar-email", element: <VerificarEmail /> },
+      { path: "/reset-password", element: <ResetPassword /> },
       {
         path: "/perfil",
         element: <ProtectedRoute element={<Perfil />} />,

@@ -56,7 +56,7 @@ export default function LoginForm() {
         </ComponentButton>
 
         <p className="auth-link">
-          <a href="/esqueci-a-password">Esqueceste-te da password?</a>
+          <a href="/forgot-password">Esqueceste-te da password?</a>
         </p>
       </form>
     </AuthCard>
