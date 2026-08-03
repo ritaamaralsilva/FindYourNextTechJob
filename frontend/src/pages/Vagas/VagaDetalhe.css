@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --lavanda: #C9B6F0;
+    --lavanda-escura: #A98FE0;
+    --pessego: #FFC9A8;
+    --menta: #A8E6C9;
+    --rosa-suave: #FFB4C6;
+    --texto: #5B4B6E;
+    --texto-suave: #8A7A9E;
+}
+
+.vaga-detalhe {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.vaga-detalhe-voltar {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--lavanda-escura);
+    text-decoration: none;
+}
+
+.vaga-detalhe-voltar:hover {
+    text-decoration: underline wavy;
+    text-underline-offset: 3px;
+}
+
+.vaga-detalhe-card {
+    background: #FFFFFF;
+    border-radius: 28px;
+    padding: 2.5rem;
+    border: 2px solid #F0E9FA;
+    box-shadow: 0 20px 45px -20px rgba(169, 143, 224, 0.3);
+    position: relative;
+}
+
+.vaga-detalhe-card::before {
+    content: "✦";
+    position: absolute;
+    top: -16px;
+    left: 40px;
+    font-size: 1.6rem;
+    color: var(--pessego);
+    background: #FFFFFF;
+    padding: 0 8px;
+}
+
+.vaga-detalhe-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.vaga-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.vaga-badge-remoto {
+    background: rgba(168, 230, 201, 0.4);
+    color: #2E7D5C;
+}
+
+.vaga-badge-hibrido {
+    background: rgba(255, 201, 168, 0.4);
+    color: #B5501E;
+}
+
+.vaga-badge-presencial {
+    background: rgba(255, 180, 198, 0.35);
+    color: #C24565;
+}
+
+.vaga-badge-senioridade {
+    background: rgba(201, 182, 240, 0.35);
+    color: var(--lavanda-escura);
+}
+
+.vaga-badge-area {
+    background: #FAF7FF;
+    color: var(--texto-suave);
+    border: 1px solid #ECE3FA;
+}
+
+.vaga-detalhe-titulo {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--texto);
+    margin: 0 0 0.4rem 0;
+    line-height: 1.25;
+}
+
+.vaga-detalhe-empresa {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--lavanda-escura);
+    margin: 0 0 1.75rem 0;
+}
+
+.vaga-detalhe-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    background: #FFF9F5;
+    border-radius: 18px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.vaga-detalhe-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.95rem;
+    color: var(--texto);
+}
+
+.vaga-detalhe-info-label {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.vaga-detalhe-fonte {
+    text-transform: capitalize;
+}
+
+.vaga-detalhe-tecnologias,
+.vaga-detalhe-descricao {
+    margin-bottom: 2rem;
+}
+
+.vaga-detalhe-tecnologias h3,
+.vaga-detalhe-descricao h3 {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--texto);
+    margin: 0 0 0.9rem 0;
+}
+
+.vaga-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.vaga-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    background: #FAF7FF;
+    border: 1px solid #ECE3FA;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+}
+
+.vaga-detalhe-descricao p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--texto);
+    white-space: pre-line;
+}
+
+.vaga-detalhe-estado {
+    text-align: center;
+    padding: 4rem 1rem;
+    font-family: 'Nunito', sans-serif;
+    color: var(--texto-suave);
+}
+
+.vaga-detalhe-erro-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .vaga-detalhe-card {
+        padding: 1.75rem;
+    }
+
+    .vaga-detalhe-titulo {
+        font-size: 1.5rem;
+    }
+}
