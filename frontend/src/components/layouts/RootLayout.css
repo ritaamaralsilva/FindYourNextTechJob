@@ -1,0 +1,261 @@
+:root {
+    --navbar-height: 82px;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.vagas-navbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+
+    height: var(--navbar-height);
+
+    display: flex;
+    justify-content: center;
+
+    transition: all .35s ease;
+}
+
+.navbar-glass {
+    backdrop-filter: blur(16px);
+    background: rgba(247, 244, 236, .92);
+    border-bottom: 1px solid rgba(190, 166, 111, .35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.vagas-navbar-inner {
+    width: min(1180px, 88%);
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.vagas-navbar-left,
+.vagas-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
+.vagas-navbar-right {
+    justify-content: flex-end;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.vagas-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-decoration: none;
+
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+
+    color: var(--color-wine);
+
+    transition: .3s;
+}
+
+.vagas-brand:hover {
+    color: var(--color-gold);
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+.nav-link {
+    position: relative;
+
+    text-decoration: none;
+
+    color: var(--color-ink);
+
+    font-size: .92rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: var(--color-wine);
+}
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0%;
+    height: 2px;
+
+    background: var(--color-gold);
+
+    transition: .3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--color-wine);
+}
+
+/* ===========================
+   BOTÃO SAIR
+=========================== */
+
+.nav-logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    padding: 0;
+
+    font: inherit;
+    color: inherit;
+}
+
+.nav-logout:hover {
+    color: var(--color-wine);
+}
+
+/* ===========================
+   HAMBURGER
+=========================== */
+
+.hamburger {
+    display: none;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+
+    width: 28px;
+    height: 2px;
+
+    margin: 7px 0;
+
+    background: var(--color-ink);
+
+    transition: .35s;
+}
+
+.hamburger-active span:first-child {
+    transform: translateY(4.5px) rotate(45deg);
+}
+
+.hamburger-active span:last-child {
+    transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height .35s ease;
+
+    background: var(--color-bg);
+    border-top: 1px solid rgba(190, 166, 111, .3);
+}
+
+.mobile-menu-active {
+    max-height: 500px;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2rem;
+    gap: 1.4rem;
+}
+
+.mobile-link {
+    text-decoration: none;
+    color: var(--color-ink);
+
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.mobile-link.active {
+    color: var(--color-wine);
+}
+
+.restaurante-btn-sair {
+    border: none;
+    background: none;
+
+    color: var(--color-wine);
+
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* ===========================
+   MAIN
+=========================== */
+
+main {
+    padding-top: var(--navbar-height);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:950px) {
+
+    .restaurante-navbar-left,
+    .restaurante-navbar-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        margin-left: auto;
+    }
+
+    .restaurante-brand {
+        position: static;
+        transform: none;
+        margin-right: auto;
+        font-size: 1.4rem;
+    }
+
+}
