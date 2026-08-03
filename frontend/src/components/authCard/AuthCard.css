@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --bg-cream: #FFF6EF;
+    --lavanda: #C9B6F0;
+    --lavanda-escura: #A98FE0;
+    --pessego: #FFC9A8;
+    --menta: #A8E6C9;
+    --rosa-suave: #FFB4C6;
+    --texto: #5B4B6E;
+    --texto-suave: #8A7A9E;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: var(--bg-cream);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* blobs decorativos atrás do cartão */
+.auth-container::before,
+.auth-container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50% 40% 60% 50% / 50% 60% 40% 50%;
+    filter: blur(2px);
+    opacity: 0.55;
+    z-index: 0;
+}
+
+.auth-container::before {
+    width: 340px;
+    height: 340px;
+    background: var(--pessego);
+    top: -80px;
+    left: -100px;
+}
+
+.auth-container::after {
+    width: 280px;
+    height: 280px;
+    background: var(--menta);
+    bottom: -90px;
+    right: -80px;
+}
+
+.auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: #FFFFFF;
+    border-radius: 28px;
+    padding: 2.5rem 2.25rem;
+    box-shadow: 0 20px 45px -15px rgba(169, 143, 224, 0.35),
+        0 8px 20px -8px rgba(255, 180, 198, 0.25);
+    border: 2px solid rgba(201, 182, 240, 0.25);
+}
+
+.auth-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.85rem;
+    color: var(--texto);
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.mb-3 {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--texto);
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid #F0E9FA;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: var(--texto);
+    background: #FDFBFF;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    box-sizing: border-box;
+}
+
+.form-control::placeholder {
+    color: #C7BCDC;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--lavanda);
+    box-shadow: 0 0 0 4px rgba(201, 182, 240, 0.3);
+    transform: translateY(-1px);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--lavanda-escura);
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+    cursor: pointer;
+}
+
+.text-danger {
+    color: #E0708A;
+    background: rgba(255, 180, 198, 0.2);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.text-success {
+    color: #3E9E76;
+    background: rgba(168, 230, 201, 0.25);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.auth-link a {
+    color: var(--lavanda-escura);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline wavy;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+        border-radius: 22px;
+    }
+}
