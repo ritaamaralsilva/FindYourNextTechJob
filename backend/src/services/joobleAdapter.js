@@ -16,7 +16,7 @@ function esperar(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function buscarVagasJooble() {
+async function fetchVagasJooble() {
   const apiKey = process.env.JOOBLE_API_KEY;
   const todasAsVagas = [];
 
@@ -103,10 +103,25 @@ function extrairTecnologias(descricao) {
     .join(",");
 }
 
+
+// remove tags HTML e descodifica as entidades mais comuns do snippet da Jooble
+function limparHtml(texto) {
+  if (!texto) return "";
+
+  return texto
+    .replace(/<[^>]*>/g, "")       // remove tags tipo <b>, </b>, <br>
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")          // colapsa espaços múltiplos em um só
+    .trim();
+}
+
 // normaliza o formato da Jooble para o schema unificado da base de dados em mySQL
 function normalizarVagaJooble(vagaJooble) {
   const titulo = vagaJooble.title || "";
-  const descricao = vagaJooble.snippet || "";
+  const descricao = limparHtml(vagaJooble.snippet || "");
 
   return {
     titulo,
@@ -125,4 +140,4 @@ function normalizarVagaJooble(vagaJooble) {
   };
 }
 
-module.exports = { buscarVagasJooble, normalizarVagaJooble };
+module.exports = { fetchVagasJooble, normalizarVagaJooble };

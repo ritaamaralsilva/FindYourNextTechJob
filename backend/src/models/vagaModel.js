@@ -56,4 +56,16 @@ async function opcoesFiltro() {
   };
 }
 
-module.exports = { listarVagas, opcoesFiltro };
+async function fetchVagaPorId(id) {
+  const [rows] = await pool.query(
+    `SELECT v.*, e.nome AS empresa, e.site AS empresa_site, f.nome AS fonte
+     FROM vagas v
+     LEFT JOIN empresas e ON v.empresa_id = e.id
+     LEFT JOIN fontes f ON v.fonte_id = f.id
+     WHERE v.id = ?`,
+    [id]
+  );
+  return rows[0];
+}
+
+module.exports = { listarVagas, opcoesFiltro, fetchVagaPorId };

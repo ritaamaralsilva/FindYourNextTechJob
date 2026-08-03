@@ -1,4 +1,4 @@
-const { listarVagas, opcoesFiltro } = require("../models/vagaModel");
+const { listarVagas, opcoesFiltro, fetchVagaPorId } = require("../models/vagaModel");
 
 async function listar(req, res) {
   const vagas = await listarVagas(req.query);
@@ -10,4 +10,12 @@ async function opcoes(req, res) {
   res.json(opcoes);
 }
 
-module.exports = { listar, opcoes };
+async function detalhes(req, res) {
+    const vaga = await fetchVagaPorId(req.params.id);
+    if (!vaga) {
+        return res.status(404).json({ erro: "Vaga não encontrada" });
+    }
+    res.json({ vaga });
+}
+
+module.exports = { listar, opcoes, detalhes };

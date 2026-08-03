@@ -1,9 +1,9 @@
-const { buscarVagasJooble, normalizarVagaJooble } = require("../services/joobleAdapter");
+const { fetchVagasJooble, normalizarVagaJooble } = require("../services/joobleAdapter");
 const { guardarVaga } = require("../models/ingestaoModel");
 
 async function correrIngestaoJooble() {
   console.log("A ir buscar vagas à Jooble...");
-  const vagasJooble = await buscarVagasJooble();
+  const vagasJooble = await fetchVagasJooble();
 
   let novas = 0;
   for (const vagaBruta of vagasJooble) {
