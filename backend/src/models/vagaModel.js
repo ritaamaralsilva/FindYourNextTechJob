@@ -52,7 +52,7 @@ async function opcoesFiltro() {
     areas: areas.map((r) => r.area),
     cidades: cidades.map((r) => r.localizacao),
     regimes: ["remoto", "hibrido", "presencial"],
-    senioridades: ["estagio", "junior", "pleno", "senior"],
+    senioridades: ["estagio", "junior", "mid", "senior"],
   };
 }
 

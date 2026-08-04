@@ -42,7 +42,7 @@ function classificarSenioridade(titulo) {
   if (/estágio|estagiário|intern\b|trainee/.test(texto)) return "estagio";
   if (/principal|staff|\bsr\.?\b|senior|sénior|lead\b/.test(texto)) return "senior";
   if (/\bjr\.?\b|junior|júnior|entry[\s-]?level/.test(texto)) return "junior";
-  return "pleno";
+  return "mid";
 }
 
 function classificarRegime(titulo, descricao) {

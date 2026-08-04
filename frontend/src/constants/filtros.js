@@ -23,7 +23,7 @@ export const rotulosArea = {
 export const rotulosSenioridade = {
   estagio: "Estágio",
   junior: "Júnior",
-  pleno: "Pleno",
+  mid: "Mid",
   senior: "Sénior",
 };
 
@@ -44,5 +44,5 @@ export const ordemArea = [
   "outra",
 ];
 
-export const ordemSenioridade = ["estagio", "junior", "pleno", "senior"];
+export const ordemSenioridade = ["estagio", "junior", "mid", "senior"];
 export const ordemRegime = ["remoto", "hibrido", "presencial"];
