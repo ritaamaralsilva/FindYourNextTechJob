@@ -1,7 +1,10 @@
 const pool = require("../config/db");
 
 async function listarVagas(filtros) {
-  const { area, stack, cidade, regime, senioridade, pagina = 1, porPagina = 20 } = filtros;
+  const {
+    area, stack, cidade, regime, senioridade, data,
+    ordenar = "recente", pagina = 1, porPagina,
+  } = filtros;
 
   const condicoes = [];
   const valores = [];
@@ -27,21 +30,42 @@ async function listarVagas(filtros) {
     valores.push(senioridade);
   }
 
+  const diasPorOpcao = { "24h": 1, semana: 7, mes: 30 };
+  if (data && diasPorOpcao[data]) {
+    condicoes.push("v.data_post >= DATE_SUB(CURDATE(), INTERVAL ? DAY)");
+    valores.push(diasPorOpcao[data]);
+  }
+
   const whereClause = condicoes.length ? `WHERE ${condicoes.join(" AND ")}` : "";
-  const offset = (pagina - 1) * porPagina;
+  const direcaoOrdem = ordenar === "antiga" ? "ASC" : "DESC";
 
-  const [rows] = await pool.query(
-    `SELECT v.*, e.nome AS empresa, f.nome AS fonte
-     FROM vagas v
-     LEFT JOIN empresas e ON v.empresa_id = e.id
-     LEFT JOIN fontes f ON v.fonte_id = f.id
-     ${whereClause}
-     ORDER BY v.data_post DESC
-     LIMIT ? OFFSET ?`,
-    [...valores, Number(porPagina), Number(offset)]
+  const [totalRows] = await pool.query(
+    `SELECT COUNT(*) AS total FROM vagas v ${whereClause}`,
+    valores
   );
+  const total = totalRows[0].total;
 
-  return rows;
+  const mostrarTodas = !porPagina || porPagina === "all";
+
+  let query = `
+    SELECT v.*, e.nome AS empresa, f.nome AS fonte
+    FROM vagas v
+    LEFT JOIN empresas e ON v.empresa_id = e.id
+    LEFT JOIN fontes f ON v.fonte_id = f.id
+    ${whereClause}
+    ORDER BY v.data_post ${direcaoOrdem}
+  `;
+  const params = [...valores];
+
+  if (!mostrarTodas) {
+    const offset = (pagina - 1) * porPagina;
+    query += " LIMIT ? OFFSET ?";
+    params.push(Number(porPagina), Number(offset));
+  }
+
+  const [rows] = await pool.query(query, params);
+
+  return { vagas: rows, total };
 }
 
 async function opcoesFiltro() {

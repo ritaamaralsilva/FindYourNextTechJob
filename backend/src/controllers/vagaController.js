@@ -1,8 +1,8 @@
 const { listarVagas, opcoesFiltro, fetchVagaPorId } = require("../models/vagaModel");
 
 async function listar(req, res) {
-  const vagas = await listarVagas(req.query);
-  res.json({ vagas });
+  const { vagas, total } = await listarVagas(req.query);
+  res.json({ vagas, total });
 }
 
 async function opcoes(req, res) {

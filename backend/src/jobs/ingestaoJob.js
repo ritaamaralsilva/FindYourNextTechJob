@@ -1,5 +1,5 @@
 const { fetchVagasJooble, normalizarVagaJooble } = require("../services/joobleAdapter");
-const { fetchVagasITJobs, normalizarVagaITJobs } = require("../services/itjobsAdapter");
+const { fetchVagasITJobs, normalizarVagaITJobs } = require("../services/itJobsAdapter");
 const { guardarVaga } = require("../models/ingestaoModel");
 
 async function runIngestaoJooble() {
