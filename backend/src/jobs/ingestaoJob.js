@@ -1,5 +1,6 @@
 const { fetchVagasJooble, normalizarVagaJooble } = require("../services/joobleAdapter");
 const { fetchVagasITJobs, normalizarVagaITJobs } = require("../services/itJobsAdapter");
+const { fetchVagasArbeitnow, normalizarVagaArbeitnow } = require("../services/arbeitnowAdapter");
 const { guardarVaga } = require("../models/ingestaoModel");
 
 async function runIngestaoJooble() {
@@ -25,9 +26,22 @@ async function runIngestaoITJobs() {
     const id = await guardarVaga(normalizarVagaITJobs(vagaBruta));
     if (id) novas++;
   }
-
   console.log(`ITJobs: ${novas} vagas novas de ${vagas.length} recebidas.`);
   return { total: vagas.length, novas };
 }
 
-module.exports = { runIngestaoJooble, runIngestaoITJobs };
+  async function runIngestaoArbeitnow() {
+  console.log("A ir buscar vagas à Arbeitnow...");
+  const vagas = await fetchVagasArbeitnow();
+
+  let novas = 0;
+  for (const vagaBruta of vagas) {
+    const id = await guardarVaga(normalizarVagaArbeitnow(vagaBruta));
+    if (id) novas++;
+  }
+
+  console.log(`Arbeitnow: ${novas} vagas novas de ${vagas.length} recebidas.`);
+  return { total: vagas.length, novas };
+}
+
+module.exports = { runIngestaoJooble, runIngestaoITJobs, runIngestaoArbeitnow };
