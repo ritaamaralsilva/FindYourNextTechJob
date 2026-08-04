@@ -19,6 +19,7 @@ export default function Homepage() {
     Object.entries(filtros).forEach(([chave, valor]) => {
       if (valor) params.set(chave, valor);
     });
+    params.set("porPagina", "all");
 
     fetch(`${API_URL}/api/vagas?${params.toString()}`)
       .then((res) => {

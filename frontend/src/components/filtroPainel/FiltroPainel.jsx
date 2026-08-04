@@ -101,6 +101,31 @@ export default function FiltroPainel({ filtros, onChange }) {
           ))}
         </select>
       </div>
+      <div className="filtro-campo">
+        <label htmlFor="filtro-data">Data de publicação</label>
+        <select
+          id="filtro-data"
+          value={filtros.data || ""}
+          onChange={(e) => atualizarFiltro("data", e.target.value)}
+        >
+          <option value="">Qualquer altura</option>
+          <option value="24h">Últimas 24 horas</option>
+          <option value="semana">Última semana</option>
+          <option value="mes">Último mês</option>
+        </select>
+      </div>
+
+      <div className="filtro-campo">
+        <label htmlFor="filtro-ordenar">Ordenar por</label>
+        <select
+          id="filtro-ordenar"
+          value={filtros.ordenar || "recente"}
+          onChange={(e) => atualizarFiltro("ordenar", e.target.value)}
+        >
+          <option value="recente">Mais recentes primeiro</option>
+          <option value="antiga">Mais antigas primeiro</option>
+        </select>
+      </div>
     </div>
   );
 }
