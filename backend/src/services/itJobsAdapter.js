@@ -57,7 +57,7 @@ function normalizarVagaITJobs(vagaITJobs) {
 
   const idsContrato = (vagaITJobs.contracts || []).map((c) => Number(c.id));
   const ehEstagioPorContrato = idsContrato.some((id) => CONTRATOS_ESTAGIO.includes(id));
-  const senioridade = ehEstagioPorContrato ? "estagio" : classificarSenioridade(titulo);
+  const senioridade = ehEstagioPorContrato ? "estagio" : classificarSenioridade(titulo, descricao);
 
   const localizacao = vagaITJobs.locations?.[0]?.name || "Portugal";
 

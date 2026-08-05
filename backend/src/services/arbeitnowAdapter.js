@@ -29,7 +29,7 @@ function normalizarVagaArbeitnow(vagaArbeitnow) {
       ? new Date(vagaArbeitnow.created_at * 1000).toISOString().split("T")[0]
       : null,
     area: classificarArea(titulo, descricao),
-    senioridade: classificarSenioridade(titulo),
+    senioridade: classificarSenioridade(titulo, descricao),
     salarioMin: null,
     salarioMax: null,
     regime: vagaArbeitnow.remote ? "remoto" : "presencial",

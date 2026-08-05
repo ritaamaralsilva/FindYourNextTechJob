@@ -64,7 +64,7 @@ function normalizarVagaJooble(vagaJooble) {
     urlOriginal: vagaJooble.link,
     dataPost: vagaJooble.updated ? vagaJooble.updated.split("T")[0] : null,
     area: classificarArea(titulo, descricao),
-    senioridade: classificarSenioridade(titulo),
+    senioridade: classificarSenioridade(titulo, descricao),
     salarioMin: null, // a Jooble devolve salário como texto livre (ex.: "€1200 - €1500")
     salarioMax: null,
     regime: classificarRegime(titulo, descricao),
