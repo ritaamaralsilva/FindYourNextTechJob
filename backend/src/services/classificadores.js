@@ -36,10 +36,12 @@ function classificarArea(titulo, descricao) {
   return "outra";
 }
 
-function classificarSenioridade(titulo) {
-  const texto = titulo.toLowerCase();
+function classificarSenioridade(titulo, descricao = "") {
+  const texto = `${titulo} ${descricao}`.toLowerCase();
 
-  if (/estágio|estagiário|intern\b|trainee/.test(texto)) return "estagio";
+  if (/estágio|estagiário|intern\b|trainee|recém[\s-]?licenciado|recent graduate|graduate program|sem experiência|no experience required/.test(texto)) {
+    return "estagio";
+  }
   if (/principal|staff|\bsr\.?\b|senior|sénior|lead\b/.test(texto)) return "senior";
   if (/\bjr\.?\b|junior|júnior|entry[\s-]?level/.test(texto)) return "junior";
   return "mid";
