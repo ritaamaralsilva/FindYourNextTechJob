@@ -1,6 +1,10 @@
 const { fetchVagasJooble, normalizarVagaJooble } = require("../services/joobleAdapter");
 const { fetchVagasITJobs, normalizarVagaITJobs } = require("../services/itJobsAdapter");
 const { fetchVagasArbeitnow, normalizarVagaArbeitnow } = require("../services/arbeitnowAdapter");
+const { fetchVagasIEFP, normalizarVagaIEFP } = require("../services/iefpAdapter");
+const { fetchVagasSmartRecruiters, normalizarVagaSmartRecruiters } = require("../services/smartrecruitersAdapter");
+const { fetchVagasLever, normalizarVagaLever } = require("../services/leverAdapter");
+const { fetchVagasGreenhouse, normalizarVagaGreenhouse } = require("../services/greenhouseAdapter");
 const { guardarVaga } = require("../models/ingestaoModel");
 
 async function runIngestaoJooble() {
@@ -44,4 +48,60 @@ async function runIngestaoITJobs() {
   return { total: vagas.length, novas };
 }
 
-module.exports = { runIngestaoJooble, runIngestaoITJobs, runIngestaoArbeitnow };
+async function runIngestaoIEFP() {
+  console.log("A carregar vagas de estágios ao IEFP...");
+  const vagas = await fetchVagasIEFP();
+
+  let novas = 0;
+  for (const vagaBruta of vagas) {
+    const id = await guardarVaga(normalizarVagaIEFP(vagaBruta));
+    if (id) novas++;
+  }
+
+  console.log(`IEFP: ${novas} vagas novas de ${vagas.length} recebidas.`);
+  return { total: vagas.length, novas };
+}
+
+async function runIngestaoGreenhouse() {
+  console.log("A ir buscar vagas ao Greenhouse...");
+  const vagas = await fetchVagasGreenhouse();
+
+  let novas = 0;
+  for (const vagaBruta of vagas) {
+    const id = await guardarVaga(normalizarVagaGreenhouse(vagaBruta));
+    if (id) novas++;
+  }
+
+  console.log(`Greenhouse: ${novas} vagas novas de ${vagas.length} recebidas.`);
+  return { total: vagas.length, novas };
+}
+
+async function runIngestaoLever() {
+  console.log("A ir buscar vagas ao Lever...");
+  const vagas = await fetchVagasLever();
+
+  let novas = 0;
+  for (const vagaBruta of vagas) {
+    const id = await guardarVaga(normalizarVagaLever(vagaBruta));
+    if (id) novas++;
+  }
+
+  console.log(`Lever: ${novas} vagas novas de ${vagas.length} recebidas.`);
+  return { total: vagas.length, novas };
+}
+
+async function runIngestaoSmartRecruiters() {
+  console.log("A ir buscar vagas ao SmartRecruiters...");
+  const vagas = await fetchVagasSmartRecruiters();
+
+  let novas = 0;
+  for (const vagaBruta of vagas) {
+    const id = await guardarVaga(normalizarVagaSmartRecruiters(vagaBruta));
+    if (id) novas++;
+  }
+
+  console.log(`SmartRecruiters: ${novas} vagas novas de ${vagas.length} recebidas.`);
+  return { total: vagas.length, novas };
+}
+
+module.exports = { runIngestaoJooble, runIngestaoITJobs, runIngestaoArbeitnow, runIngestaoIEFP, runIngestaoGreenhouse, runIngestaoLever, runIngestaoSmartRecruiters };
