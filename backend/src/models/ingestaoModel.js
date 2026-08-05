@@ -17,7 +17,8 @@ async function obterOuCriarFonte(nome, tipo = "api") {
 }
 
 async function guardarVaga(vagaNormalizada) {
-  const empresaId = await obterOuCriarEmpresa(vagaNormalizada.empresaNome);
+  const nomeEmpresa = vagaNormalizada.empresaNome || "Entidade não divulgada";
+  const empresaId = await obterOuCriarEmpresa(nomeEmpresa);
   const fonteId = await obterOuCriarFonte(vagaNormalizada.fonteNome);
 
   const [existente] = await pool.query(
